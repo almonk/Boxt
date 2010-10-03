@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="UoR Events"/> 
+  <Content type="html">
+     <![CDATA[
+	<style>
+		#events_list{
+			padding-bottom:0!important;
+			line-height:14px;
+		}
+		#events_list li{
+			margin-bottom:9px;
+			color:#6C6C6C;
+		}
+		#events_list li a{
+			text-decoration:none;
+			margin-bottom:3px;
+		}
+		#events_view_all{
+			display:block;
+			padding:10px;
+			background-color:#E6E6E6;
+			text-decoration:none;
+		}
+	</style>
+	<div id="result">
+		<ul id="events_list" class="padding"></ul>
+		<a id="events_view_all" class="iframe_large" href="http://www.reading.ac.uk/about/about-eventlist.aspx">View all events</a>
+	</div>
+	<script type="text/javascript">
+
+	$(function() {
+		show_loading();
+	    $.getFeed({
+	        url: 'proxy.php?url=aHR0cDovL3d3dy5kYXBwZXIubmV0L3RyYW5zZm9ybS5waHA/ZGFwcE5hbWU9UmVhZGluZ1VuaUV2ZW50cyZ0cmFuc2Zvcm1lcj1SU1MmZXh0cmFBcmdfdGl0bGU9RXZlbnRfTmFtZSZleHRyYUFyZ19kZXNjcmlwdGlvbltdPUV2ZW50X0luZm9ybWF0aW9uJmFwcGx5VG9Vcmw9aHR0cCUzQSUyRiUyRnd3dy5yZWFkaW5nLmFjLnVrJTJGYWJvdXQlMkZhYm91dC1ldmVudGxpc3QuYXNweA==',
+	        success: function(feed) {
+				
+	            var html = '';
+
+	            for(var i = 0; i < feed.items.length && i < 5; i++) {
+
+	                var item = feed.items[i];
+
+	                html += '<li>'
+	                + '<a style="font-weight:bold;" class="iframe_large" href="'
+	                + item.link
+	                + '">'
+	                + item.title
+	                + '</a>'
+	                + '<br/>';
+
+	                html += ''
+	                + item.description
+	                + '</li>';
+	            }
+				
+	            $('#events_list').append(html);
+				hide_loading();
+				$('a.iframe_large').fancybox({
+					'frameWidth':		960, 
+					'frameHeight':		650, 
+					'overlayShow':		true
+				});
+	        }    
+	    });
+
+	});
+	
+	</script>
+
+	
+     ]]>
+  </Content> 
+</Module>

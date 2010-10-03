@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="Unicorn Search" /> 
+  <Content type="html">
+     <![CDATA[ 
+		<style type="text/css">
+			#unicorn-canvas{
+				background-color:#ccde9f;
+				background-image:url('http://localhost/boxt/widgets/unicorn/booksearch.png');
+				background-repeat:no-repeat;
+				background-position:10px center;
+				color:black;
+				height:80px;
+			}
+			#unicorn-canvas p{
+				color:#799a25;
+				font-weight:bold;
+				margin-bottom:6px;
+			}
+			#unicorn-canvas a{
+				color:white;
+				font-weight:normal;
+				text-decoration:underline;
+			}
+			#unicorn-canvas input[type=text]{
+				border:1px solid white;
+				padding:6px;
+				font-size:13px;
+				color:#799a25;
+				width:204px;
+			}
+			#unicorn-canvas #poweredby, #unicorn-canvas #web_tools, #unicorn-canvas #_maplib_toolbar{
+				display:none!important;
+			}
+		</style>
+		<div id="unicorn-canvas">
+			<div class="padding" style="padding-left:55px;">
+			<p>Search the Reading Library catalogue</p>
+			<form action="https://www.unicorn.reading.ac.uk/uhtbin/cgisirsi/0/0/0/123?user_id=quickuser" method="post" id="quicksearch" target="_blank">
+					<table id="unicorn-table">
+						<tr>
+						<td>
+							<input name="searchdata1" type="text" class="text" title=""/><input type="hidden" value="RUL" name="library"/>
+						</td>
+						<td>
+							<input type="submit" style="display:none;" value="Search" name="submit" class="submit"/>
+						</td>
+					</tr>
+				</table>			    	 
+			</form>
+			</div>
+		</div>
+     ]]>
+  </Content> 
+</Module>

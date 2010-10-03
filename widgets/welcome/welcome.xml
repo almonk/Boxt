@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="Welcome to Boxt" /> 
+  <Content type="html">
+     <![CDATA[ 
+		<div id="welcome-canvas" style="height:290px;">
+		
+		</div>
+     ]]>
+  </Content> 
+</Module>

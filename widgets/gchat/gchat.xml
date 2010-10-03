@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="Google Chat" /> 
+  <Content type="html">
+	<![CDATA[ 
+     <iframe src="http://talkgadget.google.com/talkgadget/client?fid=gtalk0&relay=http%3A%2F%2Fwww.google.com" style="width:100%;height:320px;border:0;"></iframe>
+ 	]]>
+  </Content> 
+</Module>

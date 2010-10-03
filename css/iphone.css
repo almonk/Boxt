@@ -1,0 +1,9 @@
+@include '../css/reset.css';
+
+.nav,.secondary_nav{
+	display:none;
+}
+
+.row{
+	width:320px;
+}

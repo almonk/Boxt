@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="Inbox" />
+  <Content type="html">
+     <![CDATA[
+		<script type="text/javascript">	
+			/*
+			 * jQuery Timer Plugin
+			 * http://www.evanbot.com/article/jquery-timer-plugin/23
+			 *
+			 * @version      1.0
+			 * @copyright    2009 Evan Byrne (http://www.evanbot.com)
+			 */ 
+
+			jQuery.timer = function(time,func,callback){
+				var a = {timer:setTimeout(func,time),callback:null}
+				if(typeof(callback) == 'function'){a.callback = callback;}
+				return a;
+			};
+
+			jQuery.clearTimer = function(a){
+				clearTimeout(a.timer);
+				if(typeof(a.callback) == 'function'){a.callback();};
+				return this;
+			};
+			
+			var myTimer = {};
+			
+			myTimer = $.timer(2000,function(){
+				$('#email_1').show('slow');
+			},function(){
+			});
+		</script>
+		<style type="text/css" media="screen">
+			.email_item{
+				width:100%;
+				height:76px;
+				border-bottom:1px solid #ccc;
+				cursor:pointer;
+				background-color:#fff;
+				opacity:0.6;
+			}
+			.email_item a{
+				text-decoration:none!important;
+			}
+			.email_unread{
+				background-image:url('http://localhost/boxt/widgets/email/unread_bullet.jpg');
+				background-position:7px center;
+				background-repeat:no-repeat;
+				opacity:1;
+			}
+			.email_subject{
+				color:black;
+				font-weight:bold;
+				margin-bottom:4px;
+				font-size:13px;				
+			}
+			.email_title{
+				font-weight:normal;
+				font-size:12px;
+				color:black;
+				margin-bottom:2px;	
+			}
+			.email_description p{
+				color:#919090;
+				line-height:14px;
+			}
+			.email_item .padding{
+				padding-left:22px;
+			}
+			.email_canvas{
+				height:280px;
+				overflow:auto;
+				width:100%;
+			}
+			.email_tooltip{
+				display:none;
+			}
+			#fancy_div h1{
+				background-image:url('http://localhost/boxt/images/ui/bg_widget_header.gif');
+				background-repeat:repeat-x;
+				color:#656565;
+				display:block;
+				font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+				font-size:12px;
+				font-weight:bold;
+				height:35px;
+				line-height:32px;
+				margin:0;
+				text-align:center;
+				text-shadow:0 1px 1px #FFFFFF;
+			}
+			.email_message{
+				height:345px;
+				background-color:white;
+				overflow:auto;
+				width:100%;
+			}
+			.email_message .padding{
+				padding:8px 10px;
+				padding-bottom:0;
+				color:black;
+			}
+			
+			.email_header{
+				height:70px;
+				background-color:white;
+				border-bottom:1px solid #ccc;
+			}
+			
+			.email_message .padding p{
+				margin-bottom:6px;
+			}
+			
+			.email_columns{
+				width:100%;
+			}
+			
+			.email_header .padding{
+				padding:8px 10px;
+			}
+			
+			.email_columns .email_left_column{
+				width:70px;
+				color:#919090;
+				text-align:right;
+				padding-right:10px;
+				height:21px;
+			}
+			
+			.email_columns .email_right_column{
+				color:black;
+			}
+			
+			.email_message_reply{
+				width:98%;
+				margin-top:20px;
+				padding:4px;
+				font-size:12px;
+				font-family:arial,sans-serif;
+			}
+		</style>
+		<div class="settings" style="display:none;">
+			<div class="padding">
+				Settings here
+			</div>
+		</div>
+		<div class="email_canvas">
+			<div class="email_item email_unread" id="email_1" style="display:none;">
+				<a class="inline_email" href="#email_1_tip">
+					<div class="padding">
+						<div class="email_subject">Kaitlyn Arnold</div>
+						<div class="email_title">New Project</div>
+						<div class="email_description"><p>Hey Al, could you give me your thoughts on this document...</p></div>
+					</div>
+				</a>
+			</div>
+			
+				<div class="email_tooltip" id="email_1_tip">
+					<h1>New Project from Kaitlyn Arnold</h1>
+					<div class="email_header">
+						<div class="padding">
+							<table class="email_columns">
+								<tr>
+									<td class="email_left_column">Date</td>
+									<td class="email_right_column">1 minute ago...</td>
+								</tr>
+								<tr>
+									<td class="email_left_column">From</td>
+									<td class="email_right_column">kaitlyn.arnold@broekastudio.co.uk</td>
+								</tr>
+								<tr>
+									<td class="email_left_column">Subject</td>
+									<td class="email_right_column">New Project</td>
+								</tr>								
+							</table>
+						</div>	
+					</div>
+					<div class="email_message">
+						<div class="padding">
+							<p>Hey Al,</p>
+							<p>could you give me your thoughts on this document? I've prepared it in a PDF format so it prints well but if it doesn't work for whatever reason just let me know :)</p>
+							<p>Also, it'd be good to hear your thoughts on the wireframes I sent over yesterday afternoon.</p>
+							<p>&nbsp;</p>
+							<p>Thanks,</p>
+							<p>K x</p>
+						</div>
+					</div>
+				</div>
+			
+			<div class="email_item" id="email_2">
+				<a class="inline_email" href="#email_1_tip">
+					<div class="padding">
+						<div class="email_subject">shirley.williams@reading.ac.uk</div>
+						<div class="email_title">Submission C: Feedback</div>
+						<div class="email_description"><p>Comments are attached for your latest submission. Many thanks, Shirley...</p></div>
+					</div>
+				</a>
+			</div>
+			
+			<div class="email_item" id="email_2">
+				<a class="inline_email" href="#email_1_tip">
+					<div class="padding">
+						<div class="email_subject">Amazon.co.uk</div>
+						<div class="email_title">Alasdair, we have refunded your account</div>
+						<div class="email_description"><p>Dear Alasdair Monk, We have refunded your account to the price of &pound;5.02 for...</p></div>
+					</div>
+				</a>
+			</div>
+			
+			<div class="email_item" id="email_2">
+				<a class="inline_email" href="#email_1_tip">
+					<div class="padding">
+						<div class="email_subject">Facebook</div>
+						<div class="email_title">Charlotte Fisher commented on her Post</div>
+						<div class="email_description"><p>"also I think I need an ipad to soak up the blood...do you recon there...</p></div>
+					</div>
+				</a>
+			</div>
+			
+			<div class="email_item" id="email_2">
+				<a class="inline_email" href="#email_1_tip">
+					<div class="padding">
+						<div class="email_subject">eBay Deals</div>
+						<div class="email_title">Today! 2 amazing deals on eBay!</div>
+						<div class="email_description"><p>eBay sent this message to Alasdair Lampon-Monk (mirrors.fevers). Your...</p></div>
+					</div>
+				</a>
+			</div>
+			
+			
+		</div>
+		<script type="text/javascript">
+			function emailMarkRead(){
+				$('#email_1').fadeTo('fast', 0.6, function() {
+					$('#email_1').removeClass('email_unread');
+				});
+			}
+			$('a.inline_email').fancybox({
+				'frameWidth':		500, 
+				'frameHeight':		450, 
+				'overlayShow':		false,
+				'padding':          0,
+				'hideOnContentClick': false,
+				'callbackOnClose': emailMarkRead
+			});
+		</script>
+     ]]>
+  </Content> 
+</Module>

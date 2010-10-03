@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="Notepad" /> 
+  <Content type="html">
+     <![CDATA[
+		<style type="text/css" media="screen">
+			@font-face {
+				font-family: 'BloklettersPotloodPotlood';
+				src: url('http://localhost/boxt/widgets/notepad/Blokletters-Potlood.eot');
+				src: local('Blokletters Potlood Potlood'), local('Blokletters-Potlood'), url('http://localhost/boxt/widgets/notepad/Blokletters-Potlood.ttf') format('truetype');
+			}
+
+			@font-face {
+				font-family: 'BloklettersBalpenBalpen';
+				src: url('http://localhost/boxt/widgets/notepad/Blokletters-Balpen.eot');
+				src: local('Blokletters Balpen Balpen'), local('Blokletters-Balpen'), url('http://localhost/boxt/widgets/notepad/Blokletters-Balpen.ttf') format('truetype');
+			}
+
+			@font-face {
+				font-family: 'BloklettersViltstiftViltstift';
+				src: url('http://localhost/boxt/widgets/notepad/Blokletters-Viltstift.eot');
+				src: local('Blokletters Viltstift Viltstift'), local('Blokletters-Viltstift'), url('http://localhost/boxt/widgets/notepad/Blokletters-Viltstift.ttf') format('truetype');
+			}
+			
+			#notepad-canvas{
+				height:222px;
+				width:290px;
+				overflow:hidden;
+			}
+			.white #notepad-header{
+				height:42px;
+				width:290px;
+				float:left;
+				background-image:url('http://localhost/boxt/widgets/notepad/notepad-top.jpg');
+			}
+			.white textarea#notepad-text{
+				border:0px;
+				float:left;
+				background-image:url('http://localhost/boxt/widgets/notepad/notepad-line.jpg');
+				line-height:24px;
+				font-size:13px;
+				color:black;
+				width:260px;
+				height:210px;
+				resize:none;
+				padding-left:30px;
+				font-family:'BloklettersBalpenBalpen',"Marker Felt", Comic Sans, sans-serif;
+			}
+			.yellow #notepad-header{
+				height:42px;
+				width:290px;
+				float:left;
+				background-image:url('http://localhost/boxt/widgets/notepad/yellow-notepad-top.jpg');
+			}
+			.yellow textarea#notepad-text{
+				border:0px;
+				float:left;
+				background-image:url('http://localhost/boxt/widgets/notepad/yellow-notepad-line.jpg');
+				line-height:24px;
+				font-size:13px;
+				color:black;
+				width:260px;
+				height:210px;
+				resize:none;
+				padding-left:30px;
+				font-family:'BloklettersBalpenBalpen',"Marker Felt", Comic Sans, sans-serif;
+			}
+		</style>
+		<script type="text/javascript" charset="utf-8">
+			$('#notepad-select').change(function() {
+				if ( $(this).val() == "yellow") {
+					$.post(baseurl+'index.php/clouds/save/',{
+						widget_name: 'notepad',
+						data_string : 'paper_color',
+						data_value : 'yellow'
+					});
+					$('#notepad-canvas').removeClass('white');
+					$('#notepad-canvas').addClass('yellow');
+				};
+				if ( $(this).val() == "white") {
+					$.post(baseurl+'index.php/clouds/save/',{
+						widget_name: 'notepad',
+						data_string : 'paper_color',
+						data_value : 'white'
+					});
+					$('#notepad-canvas').removeClass('yellow');
+					$('#notepad-canvas').addClass('white');
+				};
+			});
+			
+			function read_notepad(){
+				$.post(baseurl+'index.php/clouds/read/',{
+					widget_name: 'notepad',
+					data_string : 'notepad_text' 
+				},function(data){
+					$('#notepad-text').val(data);
+				});
+				$.post(baseurl+'index.php/clouds/read/',{
+					widget_name: 'n otepad',
+					data_string : 'paper_color' 
+				},function(data){
+					if (data=='yellow') {
+						$('#notepad-canvas').removeClass('white');
+						$('#notepad-canvas').addClass('yellow');
+					}else{
+						$('#notepad-canvas').removeClass('yellow');
+						$('#notepad-canvas').addClass('white');
+					};
+				});
+			}
+			
+			function save_notepad(){
+				$.post(baseurl+'index.php/clouds/save/',{
+					widget_name: 'notepad',
+					data_string : 'notepad_text',
+					data_value : $('#notepad-text').val()
+				});
+			}
+					
+			read_notepad();		
+			
+			$('#notepad-text').bind('keyup', function(event) {
+				save_notepad();
+			});
+		</script>
+		<div class="settings" style="display:none;">
+			<div class="padding">
+				<select style="width:100%" id="notepad-select">
+					<option value="white">White paper</option>
+					<option value="yellow">Yellow paper</option>
+				</select>
+			</div>
+		</div>
+		<div id="notepad-canvas" class="white">
+			<div id="notepad-header"></div>
+			<textarea id="notepad-text">Write your notes here...</textarea>
+		</div>
+     ]]>
+  </Content> 
+</Module>

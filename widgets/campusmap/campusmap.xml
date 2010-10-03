@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="UoR Map" /> 
+  <Content type="html">
+     <![CDATA[ 
+		<iframe src="http://www.maplib.net/fullmap.php?id=8057&lat=-53.57783079627526&lng=35.29083251953125&z=9" scrolling="no" frameborder="0" style="width:290px;height:290px;border:0px"></iframe>
+     ]]>
+  </Content> 
+</Module>

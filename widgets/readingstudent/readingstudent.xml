@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="UoR Student" /> 
+  <Content type="html">
+     <![CDATA[
+ 		<div id="uorstudent" class="tabs">
+			<ul id="tabs">
+				<li><a href="#main" class="selected" id="main"><span>Quick Links</span></a></li>
+				<li><a href="#timetable" id="timetable"><span>Timetable</span></a></li>
+				<li><a href="#courses" id="courses"><span>Courses</span></a></li>
+			</ul>
+			
+			<div id="main" class="padding">			
+			<p>Lacinia nec fringilla convallis, porttitor eu leo. Morbi nisl urna, mattis ac ornare non, bibendum eget ligula. Fusce dolor neque, tincidunt quis volutpat vel, ultrices ultricies sem. Nunc consectetur justo lacus. Mauris et nunc odio. Vivamus quis dui urna. Morbi sit amet tristique dui. Etiam id mi eget ipsum sodales fringilla. Morbi tincidunt arcu in lacus suscipit feugiat.</p> 
+			</div>
+			
+			<div id="timetable" class="padding" style="display:none;">			
+			Lacinia nec fringilla convallis, porttitor eu leo. Morbi nisl urna, mattis ac ornare non, bibendum eget ligula. Fusce dolor neque, tincidunt quis volutpat vel, ultrices ultricies sem. Nunc consectetur justo lacus. Mauris et nunc odio. Vivamus quis dui urna. Morbi sit amet tristique dui. Etiam id mi eget ipsum sodales fringilla. Morbi tincidunt arcu in lacus suscipit feugiat. 
+			
+			Lacinia nec fringilla convallis, porttitor eu leo. Morbi nisl urna, mattis ac ornare non, bibendum eget ligula. Fusce dolor neque, tincidunt quis volutpat vel, ultrices ultricies sem. Nunc consectetur justo lacus. Mauris et nunc odio. Vivamus quis dui urna. Morbi sit amet tristique dui. Etiam id mi eget ipsum sodales fringilla. Morbi tincidunt arcu in lacus suscipit feugiat. 
+			</div>
+			
+			<div id="courses" class="padding" style="display:none;">			
+			Lacinia nec fringilla convallis, porttitor eu leo. Morbi nisl urna, mattis ac ornare non, bibendum eget ligula. Fusce dolor neque
+			</div>
+			<script>
+			$(function() {
+				$('#uorstudent #main').click(function() {
+					$('#uorstudent div').hide();
+					$('#uorstudent #tabs a#timetable').removeClass('selected');
+					$('#uorstudent #tabs a#courses').removeClass('selected');
+					$(this).addClass('selected');
+					$('div#main').show();
+				});
+				$('#uorstudent #timetable').click(function() {
+					$('#uorstudent div').hide();
+					$('#uorstudent #tabs a#main').removeClass('selected');
+					$('#uorstudent #tabs a#courses').removeClass('selected');
+					$(this).addClass('selected');
+					$('div#timetable').show();
+				});
+				$('#uorstudent #courses').click(function() {
+					$('#uorstudent div').hide();
+					$('#uorstudent #tabs a#timetable').removeClass('selected');
+					$('#uorstudent #tabs a#main').removeClass('selected');
+					$(this).addClass('selected');
+					$('div#courses').show();
+				});
+			});
+			</script>
+			
+		</div>
+     ]]>
+  </Content> 
+</Module>
